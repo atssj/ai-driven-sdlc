@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Driven Software Development Lifecycle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .infographic-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            aspect-ratio: 1 / 1;
+            margin: 2rem auto;
+        }
+        .stage-card {
+            position: absolute;
+            width: 30%; /* Adjust width for responsiveness */
+            height: 30%; /* Adjust height for responsiveness */
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .stage-card:hover {
+            transform: translate(-50%, -50%) scale(1.05);
+            z-index: 10;
+        }
+        .ai-power-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: white;
+            border-radius: 50%;
+            padding: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        /* Positioning for 6 stages in a circle */
+        .stage-1 { top: 10%; left: 50%; }
+        .stage-2 { top: 35%; left: 88%; }
+        .stage-3 { top: 75%; left: 88%; }
+        .stage-4 { top: 90%; left: 50%; }
+        .stage-5 { top: 75%; left: 12%; }
+        .stage-6 { top: 35%; left: 12%; }
+
+        @media (max-width: 768px) {
+            .infographic-container {
+                aspect-ratio: auto;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+            .stage-card {
+                position: relative;
+                width: 100%;
+                height: auto;
+                transform: none;
+                top: auto;
+                left: auto;
+                padding-bottom: 1rem;
+            }
+            .stage-card:hover {
+                transform: scale(1.02);
+            }
+            .central-title {
+                display: none;
+            }
+            .flow-arrows {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4 md:p-8">
+
+    <div class="text-center mb-8 md:mb-12">
+        <h1 class="text-3xl md:text-5xl font-bold text-slate-800">AI-Driven Software Development Lifecycle</h1>
+        <p class="text-slate-500 mt-2 text-lg">A continuous cycle of innovation powered by Artificial Intelligence.</p>
+    </div>
+
+    <div class="infographic-container">
+        <!-- Central Title for Desktop -->
+        <div class="central-title absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-slate-800 rounded-full flex items-center justify-center text-center shadow-2xl z-20">
+            <h2 class="text-white text-2xl font-bold leading-tight">CI/CD &<br>Continuous<br>Improvement</h2>
+        </div>
+
+        <!-- Flow Arrows SVG for Desktop -->
+        <svg class="flow-arrows absolute top-0 left-0 w-full h-full z-0" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
+                </marker>
+            </defs>
+            <path d="M 60 13 A 40 40 0 0 1 85 35" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5, 5" marker-end="url(#arrowhead)"/>
+            <path d="M 88 45 A 40 40 0 0 1 88 75" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5, 5" marker-end="url(#arrowhead)"/>
+            <path d="M 75 88 A 40 40 0 0 1 50 89" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5, 5" marker-end="url(#arrowhead)"/>
+            <path d="M 40 88 A 40 40 0 0 1 15 75" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5, 5" marker-end="url(#arrowhead)"/>
+            <path d="M 12 65 A 40 40 0 0 1 12 35" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5, 5" marker-end="url(#arrowhead)"/>
+            <path d="M 25 15 A 40 40 0 0 1 50 11" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5, 5" marker-end="url(#arrowhead)"/>
+        </svg>
+
+        <!-- Stage 1: Requirement Gathering -->
+        <div class="stage-card stage-1 bg-white border-t-4 border-blue-500 rounded-xl shadow-lg flex flex-col items-center justify-center p-4 text-center">
+             <div class="ai-power-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 4.2-4.3.4 3.3 2.9-.9 4.2 3.8-2.3 3.8 2.3-.9-4.2 3.3-2.9-4.3-.4Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            </div>
+            <div class="text-blue-500">
+                 <!-- Icon: Document + AI brain + chat bubble -->
+                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M20 12h-2a2 2 0 0 0-2 2v0a2 2 0 0 0 2 2h2v0a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1V9a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1"></path><line x1="12" y1="18" x2="12" y2="18"></line></svg>
+            </div>
+            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">1. Requirement Gathering (Plan)</h3>
+            <p class="text-xs text-slate-500 italic mt-1">ChatGPT / AI Assistant</p>
+            <p class="text-xs md:text-sm text-slate-600 mt-2">Generate requirement document, user stories, PRD.</p>
+        </div>
+
+        <!-- Stage 2: Base Code Generation -->
+        <div class="stage-card stage-2 bg-white border-t-4 border-cyan-500 rounded-xl shadow-lg flex flex-col items-center justify-center p-4 text-center">
+            <div class="ai-power-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 4.2-4.3.4 3.3 2.9-.9 4.2 3.8-2.3 3.8 2.3-.9-4.2 3.3-2.9-4.3-.4Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            </div>
+            <div class="text-cyan-500">
+                <!-- Icon: Laptop with code brackets + magic wand -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"></path><path d="m7 11 2-2-2-2"></path><path d="m11 13 2 2 2-2"></path><path d="m7 15-1-1 1-1"></path><path d="m18 13 3-3-3-3"></path></svg>
+            </div>
+            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">2. Base Code Generation (Build)</h3>
+            <p class="text-xs text-slate-500 italic mt-1">Replit / Bolt.new</p>
+            <p class="text-xs md:text-sm text-slate-600 mt-2">Auto-create project scaffolding and base codebase.</p>
+        </div>
+
+        <!-- Stage 3: Development & Enhancement -->
+        <div class="stage-card stage-3 bg-white border-t-4 border-green-500 rounded-xl shadow-lg flex flex-col items-center justify-center p-4 text-center">
+            <div class="ai-power-badge">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 4.2-4.3.4 3.3 2.9-.9 4.2 3.8-2.3 3.8 2.3-.9-4.2 3.3-2.9-4.3-.4Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            </div>
+            <div class="text-green-500">
+                <!-- Icon: Code editor + gear -->
+                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line><path d="m15 9.5-3 3-3-3"></path></svg>
+            </div>
+            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">3. Development (Code)</h3>
+            <p class="text-xs text-slate-500 italic mt-1">VSCode / Cursor / AI IDE</p>
+            <p class="text-xs md:text-sm text-slate-600 mt-2">Refactor, add features, enhance code with AI assistance.</p>
+        </div>
+        
+        <!-- Stage 4: Testing -->
+        <div class="stage-card stage-4 bg-white border-t-4 border-orange-500 rounded-xl shadow-lg flex flex-col items-center justify-center p-4 text-center">
+             <div class="ai-power-badge">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 4.2-4.3.4 3.3 2.9-.9 4.2 3.8-2.3 3.8 2.3-.9-4.2 3.3-2.9-4.3-.4Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            </div>
+            <div class="text-orange-500">
+                <!-- Icon: Shield + checklist -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            </div>
+            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">4. Testing (Verify)</h3>
+            <p class="text-xs text-slate-500 italic mt-1">AI Test Generators / CI Tools</p>
+            <p class="text-xs md:text-sm text-slate-600 mt-2">Auto-generate unit, integration, and regression tests.</p>
+        </div>
+
+        <!-- Stage 5: Deployment -->
+        <div class="stage-card stage-5 bg-white border-t-4 border-purple-500 rounded-xl shadow-lg flex flex-col items-center justify-center p-4 text-center">
+             <div class="ai-power-badge">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 4.2-4.3.4 3.3 2.9-.9 4.2 3.8-2.3 3.8 2.3-.9-4.2 3.3-2.9-4.3-.4Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            </div>
+            <div class="text-purple-500">
+                <!-- Icon: Cloud + rocket launch -->
+                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.18 19.82a2.5 2.5 0 0 0 2.5 2.5h10.64a2.5 2.5 0 0 0 2.5-2.5V18c0-1.38-1.12-2.5-2.5-2.5h-1.64"></path><path d="m18 15-4-4-4 4"></path><path d="M14 15V3"></path><path d="M12 3h5.5a2.5 2.5 0 0 1 0 5h-11a2.5 2.5 0 0 0 0 5H11"></path></svg>
+            </div>
+            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">5. Deployment (Release)</h3>
+            <p class="text-xs text-slate-500 italic mt-1">GitHub Actions / Vercel</p>
+            <p class="text-xs md:text-sm text-slate-600 mt-2">Automated build & deployment to staging/production.</p>
+        </div>
+
+        <!-- Stage 6: Monitoring & Maintenance -->
+        <div class="stage-card stage-6 bg-white border-t-4 border-red-500 rounded-xl shadow-lg flex flex-col items-center justify-center p-4 text-center">
+             <div class="ai-power-badge">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 4.2-4.3.4 3.3 2.9-.9 4.2 3.8-2.3 3.8 2.3-.9-4.2 3.3-2.9-4.3-.4Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            </div>
+            <div class="text-red-500">
+                <!-- Icon: Dashboard + magnifying glass + AI bot -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-3z"></path><path d="M8.5 8.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-7z"></path><path d="M14.5 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-10z"></path><circle cx="18" cy="18" r="3"></circle><line x1="20.5" y1="20.5" x2="22" y2="22"></line></svg>
+            </div>
+            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">6. Monitoring & Maintenance</h3>
+            <p class="text-xs text-slate-500 italic mt-1">AI Observability Tools</p>
+            <p class="text-xs md:text-sm text-slate-600 mt-2">AI-driven logs, performance analysis, bug fixes.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
