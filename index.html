@@ -24,6 +24,7 @@
             height: 30%; /* Adjust height for responsiveness */
             transform: translate(-50%, -50%);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            z-index: 5; /* Ensure cards are above canvas */
         }
         .stage-card:hover {
             transform: translate(-50%, -50%) scale(1.05);
@@ -38,13 +39,43 @@
             padding: 4px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+        .icon-container {
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+        .stage-number {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            background-color: #475569; /* slate-600 */
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 2px solid white;
+            z-index: 1;
+        }
         /* Positioning for 6 stages in a circle */
         .stage-1 { top: 10%; left: 50%; }
-        .stage-2 { top: 35%; left: 88%; }
+        .stage-2 { top: 25%; left: 88%; }
         .stage-3 { top: 75%; left: 88%; }
         .stage-4 { top: 90%; left: 50%; }
         .stage-5 { top: 75%; left: 12%; }
-        .stage-6 { top: 35%; left: 12%; }
+        .stage-6 { top: 25%; left: 12%; }
+        
+        #arrow-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Place canvas behind everything */
+        }
 
         @media (max-width: 768px) {
             .infographic-container {
@@ -70,7 +101,7 @@
             .central-title {
                 display: none;
             }
-            .flow-arrows {
+            #arrow-canvas {
                 display: none;
             }
         }
@@ -89,31 +120,20 @@
             <h2 class="text-white text-2xl font-bold leading-tight">CI/CD &<br>Continuous<br>Improvement</h2>
         </div>
 
-        <!-- Flow Arrows SVG for Desktop -->
-        <svg class="flow-arrows absolute top-0 left-0 w-full h-full z-0" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <defs>
-                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                    <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
-                </marker>
-            </defs>
-            <path d="M 60 13 A 40 40 0 0 1 85 35" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5, 5" marker-end="url(#arrowhead)"/>
-            <path d="M 88 45 A 40 40 0 0 1 88 75" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5, 5" marker-end="url(#arrowhead)"/>
-            <path d="M 75 88 A 40 40 0 0 1 50 89" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5, 5" marker-end="url(#arrowhead)"/>
-            <path d="M 40 88 A 40 40 0 0 1 15 75" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5, 5" marker-end="url(#arrowhead)"/>
-            <path d="M 12 65 A 40 40 0 0 1 12 35" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5, 5" marker-end="url(#arrowhead)"/>
-            <path d="M 25 15 A 40 40 0 0 1 50 11" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-dasharray="5, 5" marker-end="url(#arrowhead)"/>
-        </svg>
+        <!-- Canvas for drawing arrows -->
+        <canvas id="arrow-canvas"></canvas>
 
         <!-- Stage 1: Requirement Gathering -->
         <div class="stage-card stage-1 bg-white border-t-4 border-blue-500 rounded-xl shadow-lg flex flex-col items-center justify-center p-4 text-center">
              <div class="ai-power-badge">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 4.2-4.3.4 3.3 2.9-.9 4.2 3.8-2.3 3.8 2.3-.9-4.2 3.3-2.9-4.3-.4Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
             </div>
-            <div class="text-blue-500">
+            <div class="icon-container text-blue-500">
+                 <div class="stage-number">1</div>
                  <!-- Icon: Document + AI brain + chat bubble -->
                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M20 12h-2a2 2 0 0 0-2 2v0a2 2 0 0 0 2 2h2v0a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1V9a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1"></path><line x1="12" y1="18" x2="12" y2="18"></line></svg>
             </div>
-            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">1. Requirement Gathering (Plan)</h3>
+            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">Requirement Gathering (Plan)</h3>
             <p class="text-xs text-slate-500 italic mt-1">ChatGPT / AI Assistant</p>
             <p class="text-xs md:text-sm text-slate-600 mt-2">Generate requirement document, user stories, PRD.</p>
         </div>
@@ -123,11 +143,12 @@
             <div class="ai-power-badge">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 4.2-4.3.4 3.3 2.9-.9 4.2 3.8-2.3 3.8 2.3-.9-4.2 3.3-2.9-4.3-.4Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
             </div>
-            <div class="text-cyan-500">
+            <div class="icon-container text-cyan-500">
+                <div class="stage-number">2</div>
                 <!-- Icon: Laptop with code brackets + magic wand -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"></path><path d="m7 11 2-2-2-2"></path><path d="m11 13 2 2 2-2"></path><path d="m7 15-1-1 1-1"></path><path d="m18 13 3-3-3-3"></path></svg>
             </div>
-            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">2. Base Code Generation (Build)</h3>
+            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">Base Code Generation (Build)</h3>
             <p class="text-xs text-slate-500 italic mt-1">Replit / Bolt.new</p>
             <p class="text-xs md:text-sm text-slate-600 mt-2">Auto-create project scaffolding and base codebase.</p>
         </div>
@@ -137,11 +158,12 @@
             <div class="ai-power-badge">
                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 4.2-4.3.4 3.3 2.9-.9 4.2 3.8-2.3 3.8 2.3-.9-4.2 3.3-2.9-4.3-.4Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
             </div>
-            <div class="text-green-500">
+            <div class="icon-container text-green-500">
+                <div class="stage-number">3</div>
                 <!-- Icon: Code editor + gear -->
                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line><path d="m15 9.5-3 3-3-3"></path></svg>
             </div>
-            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">3. Development (Code)</h3>
+            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">Development (Code)</h3>
             <p class="text-xs text-slate-500 italic mt-1">VSCode / Cursor / AI IDE</p>
             <p class="text-xs md:text-sm text-slate-600 mt-2">Refactor, add features, enhance code with AI assistance.</p>
         </div>
@@ -151,11 +173,12 @@
              <div class="ai-power-badge">
                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 4.2-4.3.4 3.3 2.9-.9 4.2 3.8-2.3 3.8 2.3-.9-4.2 3.3-2.9-4.3-.4Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
             </div>
-            <div class="text-orange-500">
+            <div class="icon-container text-orange-500">
+                <div class="stage-number">4</div>
                 <!-- Icon: Shield + checklist -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
             </div>
-            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">4. Testing (Verify)</h3>
+            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">Testing (Verify)</h3>
             <p class="text-xs text-slate-500 italic mt-1">AI Test Generators / CI Tools</p>
             <p class="text-xs md:text-sm text-slate-600 mt-2">Auto-generate unit, integration, and regression tests.</p>
         </div>
@@ -165,11 +188,12 @@
              <div class="ai-power-badge">
                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 4.2-4.3.4 3.3 2.9-.9 4.2 3.8-2.3 3.8 2.3-.9-4.2 3.3-2.9-4.3-.4Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
             </div>
-            <div class="text-purple-500">
+            <div class="icon-container text-purple-500">
+                <div class="stage-number">5</div>
                 <!-- Icon: Cloud + rocket launch -->
                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.18 19.82a2.5 2.5 0 0 0 2.5 2.5h10.64a2.5 2.5 0 0 0 2.5-2.5V18c0-1.38-1.12-2.5-2.5-2.5h-1.64"></path><path d="m18 15-4-4-4 4"></path><path d="M14 15V3"></path><path d="M12 3h5.5a2.5 2.5 0 0 1 0 5h-11a2.5 2.5 0 0 0 0 5H11"></path></svg>
             </div>
-            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">5. Deployment (Release)</h3>
+            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">Deployment (Release)</h3>
             <p class="text-xs text-slate-500 italic mt-1">GitHub Actions / Vercel</p>
             <p class="text-xs md:text-sm text-slate-600 mt-2">Automated build & deployment to staging/production.</p>
         </div>
@@ -179,16 +203,82 @@
              <div class="ai-power-badge">
                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 4.2-4.3.4 3.3 2.9-.9 4.2 3.8-2.3 3.8 2.3-.9-4.2 3.3-2.9-4.3-.4Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
             </div>
-            <div class="text-red-500">
+            <div class="icon-container text-red-500">
+                <div class="stage-number">6</div>
                 <!-- Icon: Dashboard + magnifying glass + AI bot -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-3z"></path><path d="M8.5 8.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-7z"></path><path d="M14.5 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-10z"></path><circle cx="18" cy="18" r="3"></circle><line x1="20.5" y1="20.5" x2="22" y2="22"></line></svg>
             </div>
-            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">6. Monitoring & Maintenance</h3>
+            <h3 class="font-bold text-slate-700 mt-2 text-sm md:text-base">Monitoring & Maintenance</h3>
             <p class="text-xs text-slate-500 italic mt-1">AI Observability Tools</p>
             <p class="text-xs md:text-sm text-slate-600 mt-2">AI-driven logs, performance analysis, bug fixes.</p>
         </div>
 
     </div>
+    
+    <script>
+        window.onload = function() {
+            const canvas = document.getElementById('arrow-canvas');
+            const container = canvas.parentElement;
+
+            function draw() {
+                // Match canvas resolution to its display size
+                const rect = container.getBoundingClientRect();
+                canvas.width = rect.width;
+                canvas.height = rect.height;
+
+                const ctx = canvas.getContext('2d');
+                if (!ctx) return;
+
+                // Clear canvas for redraw
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                const radius = Math.min(canvas.width, canvas.height) * 0.38;
+                const arrowHeadSize = 8;
+                const numArrows = 6;
+                
+                // --- Draw the dashed circle ---
+                ctx.beginPath();
+                ctx.setLineDash([5, 9]);
+                ctx.lineWidth = 1.5;
+                ctx.strokeStyle = '#94a3b8'; // slate-400
+                ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+                ctx.stroke();
+                
+                // --- Draw the arrowheads ---
+                ctx.setLineDash([]); // Solid line for arrowheads
+                ctx.fillStyle = '#94a3b8';
+
+                for (let i = 0; i < numArrows; i++) {
+                    // Calculate the angle for each arrowhead
+                    // The angle points to the space between cards
+                    const angle = (i / numArrows) * 2 * Math.PI + (Math.PI / numArrows);
+
+                    // Position on the circle
+                    const x = centerX + radius * Math.cos(angle);
+                    const y = centerY + radius * Math.sin(angle);
+
+                    // Draw arrowhead
+                    ctx.save();
+                    ctx.translate(x, y);
+                    ctx.rotate(angle + Math.PI / 2); // Align arrowhead with the circle tangent
+                    ctx.beginPath();
+                    ctx.moveTo(0, -arrowHeadSize);
+                    ctx.lineTo(arrowHeadSize / 2, 0);
+                    ctx.lineTo(-arrowHeadSize / 2, 0);
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+
+            draw();
+
+            // Redraw on window resize
+            window.addEventListener('resize', draw);
+        };
+    </script>
 
 </body>
 </html>
